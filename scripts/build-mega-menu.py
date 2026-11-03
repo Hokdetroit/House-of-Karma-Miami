@@ -1,5 +1,6 @@
 import html
 import json
+import re
 from pathlib import Path
 from site_document import Document
 from miami_branding import miami_branding
@@ -39,5 +40,6 @@ for path in PAGES.rglob('*.html'):
     output=doc.render()
     if '/mega-menu.css' not in output: output=output.replace('</head>','<link rel="stylesheet" href="/mega-menu.css"></head>')
     if '/mega-menu.js' not in output: output=output.replace('</body>','<script src="/mega-menu.js" defer></script></body>')
+    if '/resize-observer-guard.js' not in output: output=re.sub(r'(<head[^>]*>)', r'\1<script src="/resize-observer-guard.js"></script>', output, count=1, flags=re.I)
     path.write_text(miami_branding(output))
 print('Installed single-button mega navigation on every page with all unique destinations and the complete insights library.')

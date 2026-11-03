@@ -27,7 +27,7 @@ class HealthcareContentTests(unittest.TestCase):
             updated = (ROOT / relative).read_text()
             with self.subTest(page=relative):
                 for pattern in [r'<script\b[^>]*>.*?</script>', r'<video\b[^>]*>.*?</video>']:
-                    tags = [tag for tag in re.findall(pattern, updated, re.S | re.I) if 'src="/healthcare-pages.js"' not in tag and 'src="/mega-menu.js"' not in tag]
+                    tags = [tag for tag in re.findall(pattern, updated, re.S | re.I) if 'src="/healthcare-pages.js"' not in tag and 'src="/mega-menu.js"' not in tag and 'src="/resize-observer-guard.js"' not in tag]
                     self.assertEqual(re.findall(pattern, original, re.S | re.I), tags)
 
     def test_internal_navigation_resolves(self):
