@@ -136,3 +136,5 @@ for path, source in pages.items():
 (ROOT / 'asset-manifest.json').write_text(json.dumps({url: '/site-assets/' + info['file'] for url, info in assets.items()}, indent=2))
 (ROOT / 'capture-errors.json').write_text(json.dumps(errors, indent=2))
 print('COMPLETE', len(pages), 'pages,', len(assets), 'assets,', len(errors), 'unavailable resources', flush=True)
+import runpy
+runpy.run_path(str(ROOT / 'scripts' / 'finalize-site.py'))

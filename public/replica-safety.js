@@ -1,3 +1,18 @@
+window.__ODYN_LR__ = true;
+
+// Preserve the original shaders when supported; the source artwork covers devices without WebGL.
+try {
+  var testCanvas = document.createElement('canvas');
+  var graphics = testCanvas.getContext('webgl2');
+  if (graphics) {
+    graphics.getExtension('WEBGL_lose_context')?.loseContext();
+  } else {
+    var fallback = document.createElement('style');
+    fallback.textContent = '.home-hero_unicorn,.modal_unicorn{background-image:url(/site-assets/hero-poster.webp);background-size:cover;background-position:center}.home-hero_unicorn.is-mobile{display:none}@media(max-width:767px){.home-hero_unicorn:not(.is-mobile){display:none}.home-hero_unicorn.is-mobile{display:block}}';
+    document.head.appendChild(fallback);
+  }
+} catch (_) {}
+
 document.addEventListener('submit', function (event) {
   if (!(event.target instanceof HTMLFormElement)) return;
   event.preventDefault();

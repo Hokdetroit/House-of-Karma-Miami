@@ -3674,7 +3674,7 @@ var OdynCode = (() => {
       }
     );
   }
-  var SPACE_BASE = "https://polpharma.fra1.cdn.digitaloceanspaces.com/";
+  var SPACE_BASE = "/site-assets/";
   var spaceScripts = {};
   function loadSpaceScript(file, globalName) {
     if (window[globalName]) return Promise.resolve();
