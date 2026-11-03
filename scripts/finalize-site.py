@@ -39,5 +39,15 @@ for page in (PUBLIC / 'site-pages').rglob('*.html'):
 motion = ASSETS / '67ad32bc922ad3ab.js'
 text = motion.read_text().replace('var SPACE_BASE = "' + BASE + '";', 'var SPACE_BASE = "/site-assets/";')
 motion.write_text(text)
+
+# Unicorn can request a parent before scene registration or after scene teardown.
+renderer = ASSETS / 'f25b73634502d1e2.js'
+original = 'getParent(){return this.state().layers.filter(e=>e.effects&&e.effects.length).find(e=>e.effects.includes(this.parentLayer))}'
+guarded = 'getParent(){const t=this.state();return Array.isArray(t?.layers)?t.layers.filter(e=>e.effects&&e.effects.length).find(e=>e.effects.includes(this.parentLayer)):void 0}'
+text = renderer.read_text()
+if original not in text and guarded not in text:
+    raise RuntimeError('Unicorn renderer changed; review the parent-layer lifecycle patch')
+renderer.write_text(text.replace(original, guarded))
+
 (ROOT / 'asset-manifest.json').write_text(json.dumps(manifest, indent=2))
 print('COMPLETE', len(manifest), 'local assets')
