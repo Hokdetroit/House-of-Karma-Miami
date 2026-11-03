@@ -1,0 +1,65 @@
+{
+  "services": [
+    {
+      "slug": "healthcare-seo-ai-seo",
+      "name": "Healthcare SEO & AI SEO",
+      "short": "SEO & AI SEO",
+      "focus": "Search & discovery",
+      "audience": "Practices & healthcare brands",
+      "headline": "Be found. Be understood. Be chosen.",
+      "description": "Help patients discover your expertise across local search, traditional search engines, and AI-powered answer experiences. House of Karma connects technical SEO, credible healthcare content, and clear information architecture to a patient journey that makes the next step easy.",
+      "deliverables": [
+        ["Technical & local SEO", "Crawlability, indexation, site structure, Core Web Vitals, Google Business Profile planning, and consistent location information."],
+        ["AI search readiness", "Clear service definitions, answer-focused content, entity consistency, source attribution, and appropriate structured data to help systems understand your expertise."],
+        ["Clinically reviewed content", "Service pages, FAQs, clinician profiles, and patient education with subject-matter review, transparent authorship, and an editorial update process."],
+        ["Measurement & iteration", "Track relevant queries, qualified inquiries, landing-page engagement, and observed AI citations without sending patient information to advertising or unapproved analytics systems."]
+      ],
+      "steps": [["Audit the landscape", "Review your technical foundation, service areas, patient questions, competitors, and current visibility."], ["Build the authority", "Prioritize useful content, accurate business information, internal linking, and technical improvements."], ["Measure & improve", "Monitor search performance and sampled AI answers, then refine the content and conversion journey."]],
+      "faqs": [["What is AI SEO?", "AI SEO, sometimes called AEO or GEO, focuses on making your expertise clear and discoverable in AI-assisted search. It complements technical SEO and useful, credible content; it is not a shortcut or a guaranteed placement service."], ["Can you guarantee rankings or AI citations?", "No. Search engines and AI platforms independently choose what they rank, summarize, and cite. We improve eligibility, content quality, and technical foundations without promising specific placements."], ["How do you handle medical accuracy?", "Content is developed around your services and submitted to your designated clinical reviewers. We avoid unsupported outcomes, misleading claims, and advice that has not been approved by the appropriate stakeholders."]]
+    },
+    {
+      "slug": "healthcare-web-design",
+      "name": "Healthcare Web Design",
+      "short": "Web Design",
+      "focus": "Patient-first digital experiences",
+      "audience": "Clinics, specialists & care groups",
+      "headline": "A better first impression. A clearer next step.",
+      "description": "Design a healthcare website that makes complex services easy to understand. We combine the visual craft of a creative agency with accessible interfaces, search-ready architecture, and carefully planned appointment and intake journeys.",
+      "deliverables": [["Strategy & information architecture", "Patient journeys, service-line structure, location pages, clinician profiles, content hierarchy, and conversion planning."], ["Responsive interface design", "Brand-led layouts, readable typography, clear navigation, considered motion, and mobile-first appointment experiences."], ["Development & accessibility", "Responsive implementation, performance optimization, accessible components, semantic content, and practical accessibility testing."], ["Connected patient journeys", "Appointment routing, CRM handoffs, portal links, and scoped integrations. Clinical intake is kept separate from ordinary marketing forms."]],
+      "steps": [["Map the patient journey", "Understand your services, audiences, existing website, and the systems behind each next step."], ["Design & develop", "Translate brand and content into a responsive experience with carefully scoped integrations."], ["Validate & launch", "Review accessibility, devices, forms, tracking boundaries, content, and operational handoffs before release."]],
+      "faqs": [["Can you redesign an existing healthcare website?", "Yes. We can audit your current site, preserve useful content and URLs, plan redirects, and redesign the experience around your priorities."], ["Does a healthcare website automatically become HIPAA compliant?", "No. A marketing website and a patient-facing system have different requirements. Where PHI is involved, vendor agreements, configuration, access controls, and your organization’s compliance program must be addressed."], ["Can the site connect to our EMR or booking platform?", "We can scope that integration after reviewing the vendor’s APIs, permissions, licensing, security requirements, and supported workflows. Integration availability is not assumed."]]
+    },
+    {
+      "slug": "healthcare-branding",
+      "name": "Healthcare Branding",
+      "short": "Branding",
+      "focus": "Positioning, identity & trust",
+      "audience": "Healthcare & wellness organizations",
+      "headline": "Make your difference unmistakable.",
+      "description": "A healthcare brand should make people feel informed, understood, and confident in their next step. House of Karma builds strategy, identity, and messaging systems that express what makes your organization distinct without relying on unsupported clinical promises.",
+      "deliverables": [["Positioning & brand strategy", "Audience research, competitive context, service positioning, differentiation, brand architecture, and a clear narrative."], ["Visual identity systems", "Logo direction, typography, color, imagery, graphic language, and digital-first identity applications."], ["Messaging & voice", "Patient-centered value propositions, service messaging, tone of voice, and practical guidance for consistent communication."], ["Brand rollout", "Guidelines, campaign foundations, website direction, presentation templates, and coordinated launch assets."]],
+      "steps": [["Find your position", "Clarify your audience, values, services, and the promises your organization can genuinely support."], ["Build the identity", "Develop and refine the visual and verbal system with your stakeholders."], ["Activate consistently", "Roll the system into your website, content, campaigns, and day-to-day communications."]],
+      "faqs": [["Do you work with new practices and established healthcare groups?", "Yes. The scope can range from a new practice identity to a refresh or multi-location brand system."], ["Can you retain our existing logo?", "Yes. We can strengthen messaging, design standards, imagery, and applications around an existing identity, or scope a broader redesign when needed."], ["How do you approach healthcare claims?", "We work with your team to substantiate messaging and route clinical or regulated claims through the appropriate review. Branding does not substitute for legal, clinical, or advertising-policy approval."]]
+    },
+    {
+      "slug": "healthcare-content",
+      "name": "Healthcare Content",
+      "short": "Content & Production",
+      "focus": "Education, storytelling & production",
+      "audience": "Care teams & healthcare brands",
+      "headline": "Turn expertise into understanding.",
+      "description": "Create content that helps people understand your services and feel confident about taking the next step. We bring together editorial strategy, healthcare copywriting, photography, and video production, with clinical review and privacy boundaries built into the workflow.",
+      "deliverables": [["Content strategy & editorial", "Audience questions, service-line priorities, editorial calendars, clinician profiles, website copy, and educational resources."], ["Photography & video", "Practice introductions, clinician interviews, service explainers, commercial production, and branded visual storytelling with a planned approval process."], ["Campaign & social content", "Creative concepts, paid-media assets, organic social content, email content, and adaptable production formats."], ["Governance & distribution", "Clinical and brand review, patient authorization planning where applicable, accessible captions, publishing workflows, and an ongoing update cadence."]],
+      "steps": [["Plan the story", "Define the audience, purpose, channels, clinical reviewers, and privacy requirements."], ["Create with care", "Write, design, photograph, and film within the approved scope and consent boundaries."], ["Review & publish", "Approve claims and assets, prepare accessible formats, and distribute through the agreed channels."]],
+      "faqs": [["Can you film clinicians and practice locations?", "Yes. We plan the shoot, content, location permissions, participant releases, and handling of any sensitive information before production."], ["Can patient stories or testimonials be included?", "Only with the appropriate authorization and review for the intended use. We do not assume consent or publish protected information because it appeared in an earlier channel."], ["Who reviews medical content?", "Your designated clinical stakeholders approve medical accuracy and service claims. House of Karma handles creative and editorial execution; we do not replace clinical or legal reviewers."]]
+    }
+  ],
+  "projects": [
+    {"name":"Studio Escrow","slug":"studio-escrow","category":"infrastructure","type":"Internal brand","scope":"Web design · Software · Growth systems","description":"HOK’s published portfolio describes a digital presence, custom software development, and targeted advertising for Studio Escrow. This demonstrates infrastructure and growth-system capability, not a healthcare client outcome.","source":"https://www.hokdetroit.com/portfolio","service":"/studio-escrow"},
+    {"name":"Novamed Clinic","slug":"novamed-clinic","category":"healthcare","type":"Healthcare concept","scope":"Patient experience · CRM · Local SEO","description":"A healthcare digital infrastructure concept with patient-focused content, local SEO planning, CRM integration, appointment flows, and trust-building service pages. Published as a concept, not a verified live clinical deployment.","source":"https://www.hokdetroit.com/portfolio","service":"/services/healthcare-seo-ai-seo"},
+    {"name":"Vanguard Aesthetics","slug":"vanguard-aesthetics","category":"healthcare","type":"Creative showcase","scope":"Web design · Booking · CRM","description":"A luxury medical aesthetics concept combining website design, consultation booking, CRM pipeline planning, appointment reminders, and post-treatment review workflows. Creative direction shown here is not a claimed client result.","source":"https://www.hokdetroit.com/portfolio","service":"/services/healthcare-web-design"},
+    {"name":"Dr. Arya MedSpa","slug":"dr-arya-medspa","category":"healthcare","type":"Medical aesthetics concept","scope":"Patient acquisition · Content · Follow-up","description":"A medical aesthetics concept focused on consultation requests, service education, automated follow-up, and trust-building page structure. No conversion metrics, patient outcomes, or production compliance claims are asserted.","source":"https://www.hokdetroit.com/portfolio","service":"/services/healthcare-content"},
+    {"name":"Elora Skin Labs","slug":"elora-skin-labs","category":"healthcare","type":"Clinical skincare concept","scope":"Brand identity · Education · Web design","description":"A luxury clinical skincare concept with refined identity, product education, packaging direction, ecommerce structure, and a conversion-focused website. Included as brand and design exploration, not clinical evidence.","source":"https://www.hokdetroit.com/portfolio","service":"/services/healthcare-branding"},
+    {"name":"24North Media & Production","slug":"24north","category":"production","type":"Internal production division","scope":"Commercial video · Photography · Content","description":"House of Karma’s creative production division, covering commercial video, photography, product shoots, drone media, branded content, and cinematic storytelling. Included to illustrate production capabilities, not a healthcare campaign case study.","source":"https://www.hokdetroit.com/portfolio","service":"/services/healthcare-content"}
+  ]
+}

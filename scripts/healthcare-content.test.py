@@ -20,13 +20,15 @@ class Page(HTMLParser):
 
 class HealthcareContentTests(unittest.TestCase):
     def test_original_video_and_animation_scripts_are_preserved(self):
-        for path in (ROOT / 'public/site-pages').rglob('*.html'):
-            relative = str(path.relative_to(ROOT))
+        originals = subprocess.check_output(['git', 'ls-tree', '-r', '--name-only', BASELINE, '--', 'public/site-pages'], cwd=ROOT, text=True).splitlines()
+        for relative in originals:
+            if not relative.endswith('.html'): continue
             original = subprocess.check_output(['git', 'show', BASELINE + ':' + relative], cwd=ROOT, text=True)
-            updated = path.read_text()
+            updated = (ROOT / relative).read_text()
             with self.subTest(page=relative):
                 for pattern in [r'<script\b[^>]*>.*?</script>', r'<video\b[^>]*>.*?</video>']:
-                    self.assertEqual(re.findall(pattern, original, re.S | re.I), re.findall(pattern, updated, re.S | re.I))
+                    tags = [tag for tag in re.findall(pattern, updated, re.S | re.I) if 'src="/healthcare-pages.js"' not in tag and 'src="/mega-menu.js"' not in tag]
+                    self.assertEqual(re.findall(pattern, original, re.S | re.I), tags)
 
     def test_internal_navigation_resolves(self):
         routes = json.loads((ROOT / 'site-manifest.json').read_text())
@@ -51,6 +53,44 @@ class HealthcareContentTests(unittest.TestCase):
         routes = json.loads((ROOT / 'site-manifest.json').read_text())
         for path in ['/services', '/studio-escrow', '/our-process', '/services/healthcare-marketing', '/services/emr-patient-portals', '/services/telehealth', '/services/paid-media-seo', '/services/hipaa-infrastructure']:
             self.assertIn(path, routes)
+
+    def test_dedicated_pages_and_portfolio(self):
+        routes = json.loads((ROOT / 'site-manifest.json').read_text())
+        data = json.loads((ROOT / 'scripts/healthcare-pages.json').read_text())
+        for service in data['services']:
+            route = '/services/' + service['slug']
+            self.assertIn(route, routes)
+            source = (ROOT / ('public' + routes[route])).read_text()
+            self.assertEqual(len(re.findall(r'<h1\b', source)), 1)
+            self.assertIn(service['name'].replace('&', '&amp;'), source)
+            self.assertEqual(source.count('class="hok-faq"'), 3)
+        portfolio = (ROOT / ('public' + routes['/portfolio'])).read_text()
+        self.assertEqual(portfolio.count('data-project-category='), 6)
+        self.assertEqual(portfolio.count('class="hok-project-dialog"'), 6)
+        self.assertIn('not every showcase represents a client engagement', portfolio)
+        for asset in re.findall(r'src="(/portfolio-assets/[^"]+)"', portfolio):
+            self.assertTrue((ROOT / ('public' + asset)).is_file(), asset)
+
+    def test_mega_menu_covers_every_unique_page(self):
+        routes = json.loads((ROOT / 'site-manifest.json').read_text())
+        for destination in set(routes.values()):
+            source = (ROOT / ('public' + destination)).read_text()
+            self.assertEqual(source.count('id="hok-mega-menu"'), 1)
+            self.assertEqual(source.count('data-hok-menu-open'), 1)
+            self.assertIn('aria-controls="hok-mega-menu"', source)
+            menu = re.search(r'<dialog class="hok-mega".*?</dialog>', source, re.S).group()
+            linked_destinations = {routes.get(urlsplit(href).path) for href in Page(menu).links}
+            self.assertTrue(set(routes.values()).issubset(linked_destinations), destination)
+
+    def test_founder_biography_and_local_images(self):
+        source = (ROOT / 'public/site-pages/about-us.html').read_text()
+        for text in ['Mohamad Fardous', 'Rocket Mortgage', 'University of Michigan', 'Karma by Design', 'not clinical practice', 'https://www.hokdetroit.com/about/founder']:
+            self.assertIn(text, source)
+        self.assertEqual(len(re.findall(r'<h1\b', source)), 1)
+        self.assertNotIn('illustrative reference portrait', source)
+        for filename in ['mohamad-fardous.webp', 'founder-strategy.png', 'founder-creative.webp', 'founder-learning.png', 'founder-community.png']:
+            self.assertIn('/portfolio-assets/' + filename, source)
+            self.assertTrue((ROOT / 'public/portfolio-assets' / filename).is_file())
 
 if __name__ == '__main__':
     unittest.main()
