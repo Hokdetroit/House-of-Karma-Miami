@@ -1,4 +1,24 @@
 (() => {
+  // This notification is benign per spec (observations are simply re-delivered
+  // next frame). Observers created before this script, or by browser internals,
+  // can still emit it, so stop it before other error listeners see it.
+  const isResizeObserverLoopNotice = (message) =>
+    typeof message === 'string' && message.includes('ResizeObserver loop');
+  window.addEventListener(
+    'error',
+    (event) => {
+      if (!isResizeObserverLoopNotice(event.message)) return;
+      event.stopImmediatePropagation();
+      event.preventDefault();
+    },
+    true,
+  );
+  const nativeOnError = window.onerror;
+  window.onerror = function (message, ...rest) {
+    if (isResizeObserverLoopNotice(message)) return true;
+    return typeof nativeOnError === 'function' ? nativeOnError.call(this, message, ...rest) : false;
+  };
+
   const NativeResizeObserver = window.ResizeObserver;
   if (!NativeResizeObserver || NativeResizeObserver.__hokDeferred) return;
 
