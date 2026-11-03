@@ -5,6 +5,7 @@ import subprocess
 from html.parser import HTMLParser
 from pathlib import Path
 from site_document import Document
+from miami_branding import miami_branding
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC = ROOT / 'public'
@@ -84,7 +85,7 @@ for service in DATA['services']:
     output=metadata(doc.render(),service['name'],service['description'])
     output=output.replace('<body','<body data-hok-page="service"',1)
     path=PAGES / (service['slug']+'.html')
-    path.write_text(output)
+    path.write_text(miami_branding(output))
     ROUTES['/services/'+service['slug']]='/site-pages/'+path.name
 
 cards=[]
@@ -99,7 +100,7 @@ sections=[n for n in doc.nodes if n['tag']=='section' and n['parent'] and n['par
 doc.patches.append((sections[0]['start'],sections[-1]['start'],portfolio))
 output=metadata(doc.render(),'Healthcare Portfolio','Explore House of Karma healthcare design concepts, Studio Escrow infrastructure, and creative production capabilities. Each project is clearly labeled by type.')
 output=output.replace('<body','<body data-hok-page="portfolio"',1)
-(PAGES/'portfolio.html').write_text(output)
+(PAGES/'portfolio.html').write_text(miami_branding(output))
 ROUTES['/portfolio']='/site-pages/portfolio.html'
 
 for path in PAGES.rglob('*.html'):
@@ -132,7 +133,7 @@ for path in PAGES.rglob('*.html'):
     output=doc.render()
     if '/healthcare-pages.css' not in output: output=output.replace('</head>','<link rel="stylesheet" href="/healthcare-pages.css"></head>')
     if '/healthcare-pages.js' not in output: output=output.replace('</body>','<script src="/healthcare-pages.js" defer></script></body>')
-    path.write_text(output)
+    path.write_text(miami_branding(output))
 
 (ROOT/'site-manifest.json').write_text(json.dumps(ROUTES,indent=2)+'\n')
 print('Added four dedicated service pages, portfolio, local project artwork, and sitewide navigation.')

@@ -82,9 +82,23 @@ class HealthcareContentTests(unittest.TestCase):
             linked_destinations = {routes.get(urlsplit(href).path) for href in Page(menu).links}
             self.assertTrue(set(routes.values()).issubset(linked_destinations), destination)
 
+    def test_miami_branding_on_every_page(self):
+        from miami_branding import miami_branding
+        for path in (ROOT / 'public/site-pages').rglob('*.html'):
+            source = path.read_text()
+            with self.subTest(page=path.name):
+                self.assertNotIn('detroit', source.lower())
+                self.assertIn('House of Karma Miami', source)
+                self.assertIn('Miami, Florida', source)
+                self.assertIn('MEDICAL MARKETING AGENCY', source)
+                self.assertEqual(miami_branding(source), source)
+        founder = (ROOT / 'public/site-pages/about-us.html').read_text()
+        self.assertIn('wearing a baseball jersey', founder)
+        self.assertNotIn('Miami baseball jersey', founder)
+
     def test_founder_biography_and_local_images(self):
         source = (ROOT / 'public/site-pages/about-us.html').read_text()
-        for text in ['Mohamad Fardous', 'Rocket Mortgage', 'University of Michigan', 'Karma by Design', 'not clinical practice', 'https://www.hokdetroit.com/about/founder']:
+        for text in ['Mohamad Fardous', 'Rocket Mortgage', 'University of Michigan', 'Karma by Design', 'not clinical practice', 'House of Karma Miami']:
             self.assertIn(text, source)
         self.assertEqual(len(re.findall(r'<h1\b', source)), 1)
         self.assertNotIn('illustrative reference portrait', source)

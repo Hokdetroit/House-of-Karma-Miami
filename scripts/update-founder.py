@@ -2,6 +2,7 @@ import html
 import re
 from pathlib import Path
 from site_document import Document
+from miami_branding import miami_branding
 
 ROOT = Path(__file__).resolve().parents[1]
 path = ROOT / 'public/site-pages/about-us.html'
@@ -46,5 +47,5 @@ for node in doc.nodes:
             tag=source[node['start']:node['inner']]
             tag=re.sub(r'content="[^"]*"','content="'+html.escape(value,quote=True)+'"',tag)
             doc.patches.append((node['start'],node['inner'],tag))
-path.write_text(doc.render())
+path.write_text(miami_branding(doc.render()))
 print('Updated About Us with the published founder biography, five sourced images, and service connections.')

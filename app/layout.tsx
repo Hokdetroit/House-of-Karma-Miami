@@ -3,8 +3,8 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'House of Karma | Healthcare Marketing & Systems Architecture',
-  description: 'Healthcare branding, websites, EMR architecture, patient dashboards, telehealth portals, paid ads, SEO, and Studio Escrow infrastructure. Detroit based, serving practices nationwide.',
+  title: 'House of Karma Miami | Medical Marketing Agency',
+  description: 'House of Karma Miami is a Miami-based medical marketing agency serving practices nationwide with healthcare branding, websites, paid ads, SEO, patient dashboards, telehealth portals, and Studio Escrow infrastructure.',
   robots: { index: false, follow: false },
   generator: 'v0.app',
   icons: {

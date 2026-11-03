@@ -2,6 +2,7 @@ import html
 import json
 from pathlib import Path
 from site_document import Document
+from miami_branding import miami_branding
 
 ROOT = Path(__file__).resolve().parents[1]
 PAGES = ROOT / 'public/site-pages'
@@ -38,5 +39,5 @@ for path in PAGES.rglob('*.html'):
     output=doc.render()
     if '/mega-menu.css' not in output: output=output.replace('</head>','<link rel="stylesheet" href="/mega-menu.css"></head>')
     if '/mega-menu.js' not in output: output=output.replace('</body>','<script src="/mega-menu.js" defer></script></body>')
-    path.write_text(output)
+    path.write_text(miami_branding(output))
 print('Installed single-button mega navigation on every page with all unique destinations and the complete insights library.')

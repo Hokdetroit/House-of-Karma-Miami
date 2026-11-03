@@ -7,6 +7,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BASELINE = '54e3b19'
 from site_document import Document
+from miami_branding import miami_branding
 
 SERVICES = [
     ('ranibizumab', 'healthcare-marketing', 'Healthcare Marketing', 'Brand, web & content', 'Medical practices', 'Strategy & execution', 'House of Karma', 'Build trust before the first appointment. Healthcare brand strategy, identity, patient-facing websites, conversion-focused landing pages, content production, reputation management, and referral campaigns work together as one acquisition system.'),
@@ -316,7 +317,7 @@ for route, destination in original_routes.items():
     output=output.replace('</head>', '<link rel="stylesheet" href="/healthcare-brand.css"></head>')
     original_scripts = iter(re.findall(r'<script\b[^>]*>.*?</script>', source, flags=re.S | re.I))
     output = re.sub(r'<script\b[^>]*>.*?</script>', lambda _: next(original_scripts), output, flags=re.S | re.I)
-    (ROOT/relative).write_text(output)
+    (ROOT/relative).write_text(miami_branding(output))
     print('UPDATED',route)
 
 for old,new in ROUTES.items():
